@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "156317006434",
+    "firebase_url": "https://crolab-app.firebaseio.com",
+    "project_id": "crolab-app",
+    "storage_bucket": "crolab-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156317006434:android:2165d0b4d5d9edbbdf6f3b",
+        "android_client_info": {
+          "package_name": "com.crolab.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156317006434-e3lb4ri32k3di2g49o3vpmjjffiieeie.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.crolab.app",
+            "certificate_hash": "53919018d776aec039c64a246f70e6b59cb553a9"
+          }
+        },
+        {
+          "client_id": "156317006434-alhdq6mfbo9tch9fqmrlr0mhbsmq88co.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD78XnjdznuUIXBG8HDljJj0jfjghXHFd0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156317006434-alhdq6mfbo9tch9fqmrlr0mhbsmq88co.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,8 @@
+{
+  "appId": "com.crolab.app",
+  "appName": "croApp",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
