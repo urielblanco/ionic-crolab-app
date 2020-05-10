@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieDetail } from 'src/app/interfaces/interfaces';
-import { FavoriteService } from 'src/app/services/local-data.service';
+import { FavoriteService } from 'src/app/services/favorite.service';
 
 @Component({
   selector: 'app-favoritos',

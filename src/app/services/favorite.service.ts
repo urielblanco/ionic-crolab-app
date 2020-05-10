@@ -4,9 +4,7 @@ import { MovieDetail } from '../interfaces/interfaces';
 
 const { Storage } = Plugins;
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FavoriteService {
 
   // tslint:disable-next-line: variable-name
@@ -15,11 +13,14 @@ export class FavoriteService {
   constructor() {
   }
 
-  async loadLocalMovies() {
-    const ret = await Storage.get({ key: 'peliculas' });
-    const objReturned = JSON.parse(ret.value);
+  loadFavorites() {
+    return new Promise(async resolve => {
+      const ret = await Storage.get({ key: 'peliculas' });
+      const peliculas = JSON.parse(ret.value);
 
-    this._peliculas = objReturned ? objReturned : [];
+      this._peliculas = peliculas && peliculas;
+      resolve();
+    });
   }
 
   getLocalMovies() {

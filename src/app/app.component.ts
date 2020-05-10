@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
-import {
-  Plugins,
-  StatusBarStyle,
-} from '@capacitor/core';
-
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject } from '@angular/core';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
+import { AngularFireRemoteConfig } from '@angular/fire/remote-config';
+import { Plugins, StatusBarStyle } from '@capacitor/core';
 import { Platform } from '@ionic/angular';
-import { FavoriteService } from './services/local-data.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +13,9 @@ import { FavoriteService } from './services/local-data.service';
 export class AppComponent {
   constructor(
     private platform: Platform,
-    private favoritos: FavoriteService
+    private analytics: AngularFireAnalytics,
+    private remoteConfig: AngularFireRemoteConfig,
+    @Inject(DOCUMENT) private doc: Document
   ) {
     this.initializeApp();
   }
@@ -30,6 +30,12 @@ export class AppComponent {
       console.log('this is normal in a browser', err);
     }
 
-    await this.favoritos.loadLocalMovies();
+    this.analytics.logEvent('start_cro');
+
+    this.remoteConfig.booleans.darkTheme.subscribe(resp => {
+      console.log('darkTheme', resp);
+      this.doc.body.className = resp ? 'dark' : 'light';
+    });
+
   }
 }

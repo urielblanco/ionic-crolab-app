@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { Cast, MovieDetail } from 'src/app/interfaces/interfaces';
 import { MoviesService } from 'src/app/services/movies.service';
-import { FavoriteService } from 'src/app/services/local-data.service';
+import { FavoriteService } from 'src/app/services/favorite.service';
 
 @Component({
   selector: 'app-movie-detail',
