@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { Cast, MovieDetail } from 'src/app/interfaces/interfaces';
 import { MoviesService } from 'src/app/services/movies.service';
-import { LocalDataService } from 'src/app/services/local-data.service';
+import { FavoriteService } from 'src/app/services/local-data.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -26,7 +26,7 @@ export class MovieDetailComponent implements OnInit {
 
   constructor(private movieService: MoviesService,
     private modalCtrl: ModalController,
-    private localDataService: LocalDataService,
+    private favoritos: FavoriteService,
     private toasCtrl: ToastController) { }
 
   async ngOnInit() {
@@ -39,7 +39,7 @@ export class MovieDetailComponent implements OnInit {
       this.actores = resp.cast;
     });
 
-    this.favorite = this.localDataService.isFavorite(this.movieId);
+    this.favorite = this.favoritos.isFavorite(this.movieId);
   }
 
   goBack() {
@@ -49,10 +49,10 @@ export class MovieDetailComponent implements OnInit {
   toggleFavorite() {
 
     if (this.favorite) {
-      this.localDataService.removeMovie(this.movieId);
+      this.favoritos.removeMovie(this.movieId);
       this.presentToast('Película eliminada de favoritos')
     } else {
-      this.localDataService.saveMovie(this.pelicula);
+      this.favoritos.saveMovie(this.pelicula);
       this.presentToast('Película añadida a favoritos');
     }
 

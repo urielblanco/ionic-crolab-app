@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { LocalDataService } from 'src/app/services/local-data.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-tabs',

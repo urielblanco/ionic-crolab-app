@@ -7,7 +7,7 @@ const { Storage } = Plugins;
 @Injectable({
   providedIn: 'root'
 })
-export class LocalDataService {
+export class FavoriteService {
 
   // tslint:disable-next-line: variable-name
   private _peliculas: MovieDetail[] = [];

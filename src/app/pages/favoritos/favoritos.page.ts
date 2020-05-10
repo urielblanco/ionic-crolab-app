@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieDetail } from 'src/app/interfaces/interfaces';
-import { LocalDataService } from 'src/app/services/local-data.service';
+import { FavoriteService } from 'src/app/services/local-data.service';
 
 @Component({
   selector: 'app-favoritos',
@@ -14,11 +14,11 @@ export class FavoritosPage implements OnInit {
   moviesByGenre: { name: string, peliculas: MovieDetail[] }[] = [];
   moviesMap: Map<number, { name: string, peliculas: MovieDetail[] }> = new Map();
 
-  constructor(private localDataService: LocalDataService) {
+  constructor(private favoritos: FavoriteService) {
   }
 
   async ngOnInit() {
-    this.peliculas = this.localDataService.getLocalMovies();
+    this.peliculas = this.favoritos.getLocalMovies();
     this.createArrayGenre();
   }
 

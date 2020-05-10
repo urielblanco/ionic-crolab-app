@@ -5,7 +5,7 @@ import {
 } from '@capacitor/core';
 
 import { Platform } from '@ionic/angular';
-import { LocalDataService } from './services/local-data.service';
+import { FavoriteService } from './services/local-data.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,7 @@ import { LocalDataService } from './services/local-data.service';
 export class AppComponent {
   constructor(
     private platform: Platform,
-    private favoritos: LocalDataService
+    private favoritos: FavoriteService
   ) {
     this.initializeApp();
   }
