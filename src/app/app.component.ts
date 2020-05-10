@@ -5,6 +5,7 @@ import {
 } from '@capacitor/core';
 
 import { Platform } from '@ionic/angular';
+import { LocalDataService } from './services/local-data.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import { Platform } from '@ionic/angular';
 })
 export class AppComponent {
   constructor(
-    private platform: Platform
+    private platform: Platform,
+    private favoritos: LocalDataService
   ) {
     this.initializeApp();
   }
@@ -28,5 +30,6 @@ export class AppComponent {
       console.log('this is normal in a browser', err);
     }
 
+    await this.favoritos.loadLocalMovies();
   }
 }

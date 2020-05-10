@@ -13,11 +13,11 @@ const routes: Routes = [
       },
       {
         path: 'buscar',
-        loadChildren: () => import('../buscar/buscar.module').then(m => m.Tab2PageModule)
+        loadChildren: () => import('../buscar/buscar.module').then(m => m.BuscarPageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'favoritos',
+        loadChildren: () => import('../favoritos/favoritos.module').then(m => m.FavoritosPageModule)
       },
       {
         path: '',

@@ -67,34 +67,34 @@ interface Productioncompany {
     origin_country: string;
 }
 
-interface Genre {
+export interface Genre {
     id: number;
     name: string;
 }
 
 export interface ResponseActors {
-  id: number;
-  cast: Cast[];
-  crew: Crew[];
+    id: number;
+    cast: Cast[];
+    crew: Crew[];
 }
 
 export interface Crew {
-  credit_id: string;
-  department: string;
-  gender: number;
-  id: number;
-  job: string;
-  name: string;
-  profile_path?: string;
+    credit_id: string;
+    department: string;
+    gender: number;
+    id: number;
+    job: string;
+    name: string;
+    profile_path?: string;
 }
 
 export interface Cast {
-  cast_id: number;
-  character: string;
-  credit_id: string;
-  gender: number;
-  id: number;
-  name: string;
-  order: number;
-  profile_path?: string;
+    cast_id: number;
+    character: string;
+    credit_id: string;
+    gender: number;
+    id: number;
+    name: string;
+    order: number;
+    profile_path?: string;
 }

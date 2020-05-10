@@ -17,7 +17,6 @@ export class PeliculasPage implements OnInit {
   ngOnInit() {
     this.moviesService.getFeature().subscribe(resp => {
       this.peliculasRecientes = resp.results;
-      console.log('recientes', resp);
     });
 
     this.getPopularMovies();

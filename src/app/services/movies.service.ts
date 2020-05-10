@@ -49,7 +49,20 @@ export class MoviesService {
     return this.runQueryWithoutParams<MovieDetail>(`/movie/${movieId}`);
   }
 
-  getMovieActors(movieId: string){
+  getMovieActors(movieId: string) {
     return this.runQueryWithoutParams<ResponseActors>(`/movie/${movieId}/credits`);
+  }
+
+  searchMovie(text: string, page: number = 1) {
+    return this.runQuery(`/search/movie?query=${text}&page=${page}`);
+  }
+
+  async getGenres() {
+    return new Promise<any[]>(resolve => {
+      this.runQueryWithoutParams('/genre/movie/list').subscribe(resp => {
+        // tslint:disable-next-line: no-string-literal
+        resolve(resp['genres']);
+      });
+    });
   }
 }

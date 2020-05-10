@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Pelicula } from 'src/app/interfaces/interfaces';
 
@@ -12,6 +12,7 @@ import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 export class SlideshowPosterComponent implements OnInit {
 
   @Input() peliculas: Pelicula[] = [];
+  @Output() removeFavorite: EventEmitter<{ favorite: boolean, movieId: string, genres: [] }> = new EventEmitter();
 
   slideOpts = {
     slidesPerView: 3.2,
@@ -31,6 +32,12 @@ export class SlideshowPosterComponent implements OnInit {
     });
 
     modal.present();
+
+    const { data } = await modal.onWillDismiss();
+
+    if (data && !data.favorite) {
+      this.removeFavorite.emit(data);
+    }
   }
 
 }
