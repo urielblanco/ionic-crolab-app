@@ -10,18 +10,26 @@ import { Pelicula } from 'src/app/interfaces/interfaces';
 export class PeliculasPage implements OnInit {
 
   peliculasRecientes: Pelicula[] = [];
-
-  slideOpts = {
-    slidesPerView: 1.3,
-    freeMode: true
-  };
+  peliculasPopulares: Pelicula[] = [];
 
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit() {
     this.moviesService.getFeature().subscribe(resp => {
       this.peliculasRecientes = resp.results;
-      console.log(resp);
+      console.log('recientes', resp);
     });
+
+    this.getPopularMovies();
+  }
+
+  getPopularMovies() {
+    this.moviesService.getPopular().subscribe(resp => {
+      this.peliculasPopulares.push(...resp.results);
+    });
+  }
+
+  loadNextMoviePage() {
+    this.getPopularMovies();
   }
 }

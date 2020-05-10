@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-import { RespuestaMDB } from '../interfaces/interfaces';
+import { MovieDetail, ResponseMDB, ResponseActors } from '../interfaces/interfaces';
 
 const API_URL = environment.apiUrl;
 const API_KEY = environment.apiKey;
@@ -11,6 +11,8 @@ const API_KEY = environment.apiKey;
   providedIn: 'root'
 })
 export class MoviesService {
+
+  popularPage = 0;
 
   constructor(private http: HttpClient) {
   }
@@ -21,6 +23,17 @@ export class MoviesService {
     return this.http.get<T>(query);
   }
 
+  private runQueryWithoutParams<T>(query: string) {
+    query = `${API_URL}${query}?api_key=${API_KEY}&language=es&include_img_lenguage=es`;
+
+    return this.http.get<T>(query);
+  }
+
+  getPopular() {
+    this.popularPage++;
+    return this.runQuery<ResponseMDB>(`/discover/movie?sort_by=popularity.desc&page=${this.popularPage}`);
+  }
+
 
   getFeature() {
     const today = new Date();
@@ -29,7 +42,14 @@ export class MoviesService {
     const fromDate = `${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-01`;
     const toDate = `${lastDay.getFullYear()}-${('0' + (lastDay.getMonth() + 1)).slice(-2)}-${lastDay.getDate()}`;
 
-    // tslint:disable-next-line: max-line-length
-    return this.runQuery<RespuestaMDB>(`/discover/movie?primary_release_date.gte=${fromDate}&primary_release_date.lte=${toDate}`);
+    return this.runQuery<ResponseMDB>(`/discover/movie?primary_release_date.gte=${fromDate}&primary_release_date.lte=${toDate}`);
+  }
+
+  getMovieDetail(movieId: string) {
+    return this.runQueryWithoutParams<MovieDetail>(`/movie/${movieId}`);
+  }
+
+  getMovieActors(movieId: string){
+    return this.runQueryWithoutParams<ResponseActors>(`/movie/${movieId}/credits`);
   }
 }
