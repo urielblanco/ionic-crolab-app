@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">croApp</string>
+    <string name="title_activity_main">croApp</string>
+    <string name="package_name">com.crolab.app</string>
+    <string name="custom_url_scheme">com.crolab.app</string>
+</resources>
