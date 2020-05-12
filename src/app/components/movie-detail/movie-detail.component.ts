@@ -43,7 +43,7 @@ export class MovieDetailComponent implements OnInit {
   }
 
   goBack() {
-    this.modalCtrl.dismiss({ favorite: this.favorite, movieId: this.movieId, genres: this.pelicula.genres });
+    this.modalCtrl.dismiss();
   }
 
   toggleFavorite() {

@@ -26,7 +26,7 @@ import { initApp } from './appConfig';
     { provide: DEFAULTS, useValue: { darkTheme: false } },
     {
       provide: SETTINGS,
-      useFactory: () => ({ minimumFetchIntervalMillis: 0 })
+      useFactory: () => ({ minimumFetchIntervalMillis: 10000 })
     },
     {
       provide: APP_INITIALIZER,
