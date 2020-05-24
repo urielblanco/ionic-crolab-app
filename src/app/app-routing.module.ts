@@ -1,5 +1,5 @@
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { RegisterComponent } from './components/register/register.component';
-import { UserComponent } from './components/user/user.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -13,10 +13,7 @@ const routes: Routes = [
   { path: 'home', pathMatch: 'full', redirectTo: 'tabs/peliculas' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent  },
-  /*
-  { path: 'user', component: UserComponent,  resolve: { data: UserResolver}}
-  */
-  { path: 'user', component: UserComponent, canActivate: [AuthGuardService]},
+  { path: 'reset', component: ResetPasswordComponent, canActivate: [AuthGuardService] },
   { path: '', canActivate: [AuthGuardService], loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)}
 ];
 @NgModule({

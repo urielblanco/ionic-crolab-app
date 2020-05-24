@@ -3,6 +3,8 @@ import { MoviesService } from 'src/app/services/movies.service';
 import { Pelicula } from 'src/app/interfaces/interfaces';
 import { IonInfiniteScroll, ModalController } from '@ionic/angular';
 import { MovieDetailComponent } from 'src/app/components/movie-detail/movie-detail.component';
+import { Analytics } from 'capacitor-analytics';
+const analytics = new Analytics();
 
 @Component({
   selector: 'app-buscar',
@@ -19,6 +21,24 @@ export class BuscarPage {
   searching = false;
 
   constructor(private movieService: MoviesService, private modalCtrl: ModalController) { }
+
+  ngOnInit() {
+  }
+
+  ngAfterContentInit(){
+    analytics.logEvent({
+      name: 'start_search_page',
+      params: {}
+    })
+    .then(() => console.log(`logEvent SUCCESS: start_search_page`))
+    .catch((error) => {console.log(`logEvent ERROR: `, error)})
+
+    analytics.setScreen({
+      name: `search_screen`
+    })
+    .then(() => console.log(`setScreen SUCCESS: search_screen`))
+    .catch((error) => {console.log(`setScreen ERROR: `, error)})
+  }
 
   onSearchChange(event) {
     const text: string = event.detail.value;
@@ -65,5 +85,4 @@ export class BuscarPage {
 
     modal.present();
   }
-
 }

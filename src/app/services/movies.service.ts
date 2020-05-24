@@ -45,6 +45,10 @@ export class MoviesService {
     return this.runQuery<ResponseMDB>(`/discover/movie?primary_release_date.gte=${fromDate}&primary_release_date.lte=${toDate}`);
   }
 
+  getFeatureByYear(year) {
+    return this.runQuery<ResponseMDB>(`/discover/movie?primary_release_year=${year}`);
+  }
+
   getMovieDetail(movieId: string) {
     return this.runQueryWithoutParams<MovieDetail>(`/movie/${movieId}`);
   }

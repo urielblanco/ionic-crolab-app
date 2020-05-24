@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { UserComponent } from './components/user/user.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { CoreModule } from './core/core.module';
 import { CommonModule } from '@angular/common';
 
@@ -21,12 +21,13 @@ import { AuthGuardService } from './services/auth-guard.service';
 
 // Environment
 import { environment } from '../environments/environment';
+import { from } from 'rxjs';
 
 
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, UserComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, ResetPasswordComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

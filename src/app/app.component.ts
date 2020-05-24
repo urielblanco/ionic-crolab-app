@@ -30,9 +30,9 @@ export class AppComponent {
       console.log('this is normal in a browser', err);
     }
 
-    this.analytics.logEvent('start_cro', {user: 'asier'});
+    this.analytics.logEvent('start_cro_2');
 
-    this.remoteConfig.booleans.darkTheme.subscribe(resp => {
+    await this.remoteConfig.booleans.darkTheme.subscribe(resp => {
       console.log('darkTheme', resp);
       this.doc.body.className = resp ? 'dark' : 'light';
     });

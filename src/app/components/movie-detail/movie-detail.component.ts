@@ -3,6 +3,8 @@ import { ModalController, ToastController } from '@ionic/angular';
 import { Cast, MovieDetail } from 'src/app/interfaces/interfaces';
 import { MoviesService } from 'src/app/services/movies.service';
 import { FavoriteService } from 'src/app/services/favorite.service';
+import { Analytics } from 'capacitor-analytics';
+const analytics = new Analytics();
 
 @Component({
   selector: 'app-movie-detail',
@@ -27,7 +29,7 @@ export class MovieDetailComponent implements OnInit {
   constructor(private movieService: MoviesService,
     private modalCtrl: ModalController,
     private favoritos: FavoriteService,
-    private toasCtrl: ToastController) { }
+    private toasCtrl: ToastController) {}
 
   async ngOnInit() {
 
@@ -40,6 +42,21 @@ export class MovieDetailComponent implements OnInit {
     });
 
     this.favorite = this.favoritos.isFavorite(this.movieId);
+  }
+
+  ngAfterContentInit(){
+    analytics.logEvent({
+      name: 'start_peliculas_detail_page',
+      params: {}
+    })
+    .then(() => console.log(`logEvent SUCCESS: start_peliculas_detail_page`))
+    .catch((error) => {console.log(`logEvent ERROR: `, error)})
+
+    analytics.setScreen({
+      name: `peliculas_detail_creen`
+    })
+    .then(() => console.log(`setScreen SUCCESS: peliculas_detail_creen`))
+    .catch((error) => {console.log(`setScreen ERROR: `, error)})
   }
 
   goBack() {
@@ -66,5 +83,4 @@ export class MovieDetailComponent implements OnInit {
     });
     toast.present();
   }
-
 }

@@ -19,12 +19,11 @@
           <div class="wrap-login100-form-btn">
             <div class="login100-form-bgbtn"></div>
             <button class="login100-form-btn" (click)="login(loginForm.value)" *ngIf="!(user | async)?.uid">Login</button>
-            <button class="login100-form-btn" (click)="logout()" *ngIf="(user | async)?.uid">Logout</button>
           </div>
         </div>
         <div class="text-center p-t-115">
           <span class="txt1">Don’t have an account?</span>
-          <a class="txt2" routerLink="register">Sign Up</a>
+          <a class="txt2" routerLink="/register">Sign Up</a>
         </div>
       </form>
       <div *ngIf="isSubmitted && hasError" class="isa_error">{{errorMessage}}</div>
