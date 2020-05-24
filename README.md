@@ -24,9 +24,10 @@ npm install -g npx
 
 npm install
 ionic build
-/***** para mostrar en web ****/
+
+#para mostrar en web #
 ionic serve
-/***********/
+##
 
 npx cap add ios
 npx cap add android
