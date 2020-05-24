@@ -1,0 +1,38 @@
+#user .limiter {
+    overflow: hidden;
+
+    .container-login100 {
+        align-items: inherit;
+        min-height: 93vh;
+        hr {
+            height: 0px;
+            border-width: .1px;
+            border-color: rgba(0,0,0,.1);
+            margin-bottom: 15px;
+        }
+        div.container-avatar {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            img {
+                width: auto;
+                height: 100px;
+            } 
+        }
+        div.reset-btn {
+            margin-top: 40px;
+        }
+        div.logout-btn {
+            position: absolute;
+            bottom: 29px;
+            margin: auto;
+            width: 33.333%;
+            left: 33.333%;
+        }
+    }
+}
+@media (max-width: 576px){
+    .wrap-login100 {
+        padding: 15px 15px 33px 15px;
+    }
+}

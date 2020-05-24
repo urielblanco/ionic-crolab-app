@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
-
+// Services
+import { AuthGuardService } from '../../services/auth-guard.service';
 const routes: Routes = [
   {
     path: 'tabs',
@@ -18,6 +19,11 @@ const routes: Routes = [
       {
         path: 'favoritos',
         loadChildren: () => import('../favoritos/favoritos.module').then(m => m.FavoritosPageModule)
+      },
+      {
+        path: 'usuario',
+        loadChildren: () => import('../user/user.module').then(m => m.UserPageModule), 
+        canActivate: [AuthGuardService]
       },
       {
         path: '',

@@ -1,3 +1,10 @@
+export interface Usuario {
+    uid?: string;
+    displayName?: string;
+    email?: string;
+    photoURL?: string;
+  }
+
 export interface ResponseMDB {
     page: number;
     total_results: number;
