@@ -3,20 +3,20 @@
     <div class="container-login100">
       <div class="wrap-login100">
         <div class="container-avatar">
-          <img id="photoURL" *ngIf="user.photoURL" src="{{user.photoURL}}">
-          <img id="photoURL" *ngIf="!user.photoURL" src="../../../assets/images/default_avatar.png">
+          <img id="photoURL" *ngIf="user && user.photoURL" src="{{user.photoURL}}">
+          <img id="photoURL" *ngIf="user && !user.photoURL" src="../../../assets/images/default_avatar.png">
         </div>
         <label for="uid"> Cod.</label>
-        <p id="uid" *ngIf="user.uid">{{user.uid}}</p>
-        <p id="uid" *ngIf="!user.uid">Unknown</p>
+        <p id="uid" *ngIf="user && user.uid">{{user.uid}}</p>
+        <p id="uid" *ngIf="user && !user.uid">Unknown</p>
         <hr>
         <label for="displayName"> Nombre:</label>
-        <p id="displayName" *ngIf="user.displayName">{{user.displayName}}</p>
-        <p id="displayName" *ngIf="!user.displayName">Unknown</p>
+        <p id="displayName" *ngIf="user && user.displayName">{{user.displayName}}</p>
+        <p id="displayName" *ngIf="user && !user.displayName">Unknown</p>
         <hr>
         <label for="email"> Email:</label>
-        <p id="email" *ngIf="user.email">{{user.email}}</p>
-        <p id="email" *ngIf="!user.email">Unknown</p>
+        <p id="email" *ngIf="user && user.email">{{user.email}}</p>
+        <p id="email" *ngIf="user && !user.email">Unknown</p>
         <hr>
        
         <div class="container-login100-form-btn reset-btn">

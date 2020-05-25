@@ -1,0 +1,55 @@
+<div class="create-page">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Create User</li>
+    </ol>
+  </nav>
+  <div class="page-content">
+    <div class="row">
+      <div class="col col-md-4">
+        <img class="img-avatar" src="{{avatarLink}}">
+        <button mat-stroked-button class="change-img-button" color="primary" (click)="openDialog()">Change Image</button>
+      </div>
+
+      <div class="col col-md-8">
+
+        <form class="create-form" [formGroup]="addForm" novalidate (ngSubmit)="onSubmit(addForm.value)">
+
+          <div class="form-group">
+            <div class="input-style">
+              <input  placeholder="Name" class="form-control" formControlName="name">
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.name">
+              <label *ngIf="addForm.get('name').hasError(validation.type) && (addForm.get('name').dirty || addForm.get('name').touched)">{{validation.message}}</label>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <div class="input-style">
+              <input  placeholder="Surname" class="form-control" formControlName="surname">
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.surname">
+              <label *ngIf="addForm.get('surname').hasError(validation.type) && (addForm.get('surname').dirty || addForm.get('surname').touched)">{{validation.message}}</label>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <div class="input-style">
+              <input  type="number" min="0" max="100" placeholder="Age" class="form-control" formControlName="age">
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.age">
+              <label *ngIf="addForm.get('age').hasError(validation.type) && (addForm.get('age').dirty || addForm.get('age').touched)">{{validation.message}}</label>
+            </ng-container>
+          </div>
+
+          <div class="row submit-button-container">
+            <div class="col-md-4">
+              <button mat-raised-button class="submit-button" color="primary" type="submit" [disabled]="!addForm.valid">Create</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

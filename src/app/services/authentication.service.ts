@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Plugins } from '@capacitor/core';
 // Import Observable
 import { Observable } from 'rxjs';
 
 // Import Firebase and AngularFire
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
+
+const { Storage } = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -38,8 +41,8 @@ export class AuthenticationService {
     });
   }
   
-  logout() {
-    this.clearLocalStorageUser()
+  async logout() {
+    await Storage.clear();
     this.afAuth.signOut().then(() => { console.log('logged out') });
   }
 
@@ -72,22 +75,27 @@ export class AuthenticationService {
     return this.afAuth.sendPasswordResetEmail(email);
   }
   // Set data on localStorage
-  setUserLoggedIn(user) {
-    localStorage.setItem('user', JSON.stringify(user));
+  async setUserLoggedIn(user) {
+    await Storage.set({
+      key: 'user',
+      value: JSON.stringify(user)
+    });
     console.log('saved on localStorage');
   }
 
   // get data on localStorage
-  getUserLoggedIn() {
-    if (localStorage.getItem('user')) {
-      return JSON.parse(localStorage.getItem('user'));
+  async getUserLoggedIn() {
+    const ret = await Storage.get({ key: 'user' });
+    console.log('ret', ret);
+    if (ret.value) {
+      return JSON.parse(ret.value);
     }
     else
       return 'no data';
   }
 
   // Optional: clear localStorage
-  clearLocalStorageUser() {
-    localStorage.removeItem('user');
+  async clearLocalStorageUser() {
+    await Storage.remove({ key: 'user' });
   }
 }

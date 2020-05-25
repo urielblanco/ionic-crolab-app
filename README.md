@@ -35,7 +35,10 @@ npx cap sync
 
 More info: 
 https://github.com/IdanCo/angularfire2
+
 https://github.com/stewwan/capacitor-analytics-demo
+
+https://angular-templates.io/tutorials/about/angular-forms-and-validations
 
 
 

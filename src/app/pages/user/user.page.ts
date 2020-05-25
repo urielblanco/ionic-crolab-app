@@ -16,8 +16,8 @@ userData;
     this.userData = '';
    }
 
-  ngOnInit() {
-    this.user = this.auth.getUserLoggedIn();
+  async ngOnInit() {
+    this.user = await this.auth.getUserLoggedIn();
   }
 
   ngAfterContentInit(){

@@ -1,0 +1,18 @@
+<div class="list-group users-list">
+	<div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
+		<div class="row">
+			<div class="col col-md-2 image-col">
+				<img class="image" [src]="item.avatar">
+			</div>
+			<div class="col col-md-8 text-col">
+				<h5 class="mb-1">{{item.name}} {{item.surname}}</h5>
+				<small>Age: {{item.age}}</small>
+			</div>
+			<div class="col col-md-2 actions-col">
+				<button class="btn btn-outline-primary action" (click)="removeItem(item)" type="button">
+          <span>Delete</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

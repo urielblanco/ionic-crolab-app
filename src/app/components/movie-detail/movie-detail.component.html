@@ -32,7 +32,7 @@
           <ion-item lines="none">
             <ion-icon slot="start" name="calendar-outline" color="primary"></ion-icon>
             <ion-label>Publicación</ion-label>
-            <ion-note slot="end" color="primary">{{pelicula.release_date}}</ion-note>
+            <ion-note slot="end" color="primary">{{pelicula.release_date | date: 'yyyy'}}</ion-note>
           </ion-item>
 
         </ion-col>

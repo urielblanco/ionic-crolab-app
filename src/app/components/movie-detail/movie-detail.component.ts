@@ -1,3 +1,4 @@
+import { FirebaseService } from './../../services/firebase-service.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { Cast, MovieDetail } from 'src/app/interfaces/interfaces';
@@ -29,7 +30,8 @@ export class MovieDetailComponent implements OnInit {
   constructor(private movieService: MoviesService,
     private modalCtrl: ModalController,
     private favoritos: FavoriteService,
-    private toasCtrl: ToastController) {}
+    private toasCtrl: ToastController,
+    private firebaseService: FirebaseService) {}
 
   async ngOnInit() {
 

@@ -1,3 +1,5 @@
+import { FirebaseService } from './firebase-service.service';
+import { AuthenticationService } from './authentication.service';
 import { Injectable } from '@angular/core';
 import { Plugins } from '@capacitor/core';
 import { MovieDetail } from '../interfaces/interfaces';
@@ -20,7 +22,7 @@ export class FavoriteService {
   private moviesMap: Map<number, { name: string, peliculas: MovieDetail[] }> = new Map();
   private moviesByGenre: GenreGroup[] = [];
 
-  constructor() {
+  constructor( private authService: AuthenticationService, private firebaseService: FirebaseService) {
   }
 
   get genreGroup$() {
@@ -101,10 +103,11 @@ export class FavoriteService {
     });
   }
 
-  saveMovie(pelicula: MovieDetail) {
+  async saveMovie(pelicula: MovieDetail) {
     const movie = this.peliculas.find(m => m.id === pelicula.id);
-
+    const uid = await this.authService.getUserLoggedIn().then(res => {return res.uid});
     if (!movie) {
+      this.firebaseService.setFavorite(uid, pelicula);
       this.peliculas.push(pelicula);
       this.updateLocalMovies();
       this.setMoviesMap(pelicula);
@@ -113,11 +116,12 @@ export class FavoriteService {
 
   }
 
-  removeMovie(movieId: string) {
-
+  async removeMovie(movieId: string) {
     const movieIndex = this.peliculas.findIndex(m => m.id === +movieId);
+    const uid = await this.authService.getUserLoggedIn().then(res => {return res.uid});
 
     if (movieIndex > -1) {
+      this.firebaseService.removeFavorite(uid, movieId);
       const elementsDeleted = this.peliculas.splice(movieIndex, 1)[0];
       this.updateLocalMovies();
       this.removeFromMoviesMap(elementsDeleted);
@@ -126,8 +130,11 @@ export class FavoriteService {
 
   isFavorite(movieId: string): boolean {
     const movie = this.peliculas.find(m => m.id === +movieId);
-
     return !!movie;
+  }
+
+  async getRemoteFavorites() {
+    const uid = await this.authService.getUserLoggedIn().then(res => {return res.uid});
   }
 
 

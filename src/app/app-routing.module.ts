@@ -1,3 +1,5 @@
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NgModule } from '@angular/core';
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent  },
   { path: 'reset', component: ResetPasswordComponent, canActivate: [AuthGuardService] },
+  { path: 'userList', component: UserListComponent, canActivate: [AuthGuardService] },
+  { path: 'addUser', component: AddUserComponent, canActivate: [AuthGuardService] },
   { path: '', canActivate: [AuthGuardService], loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)}
 ];
 @NgModule({
