@@ -9,7 +9,9 @@
       width: 85%;
     }
   }
-  
+  h2 {
+      text-align: center;
+  }
   .users-list {
     padding: 40px 60px;
   
@@ -36,5 +38,23 @@
         font-size: 15px;
         color: red;
       }
+    } 
+    hr {
+        height: .5px;
+        border-width: .5px;
+        box-sizing: content-box;
+        border-color: rgba(0,0,0,.1);
+        margin-top: 15px; 
     }
   }
+  .addUserBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    border-radius: 35px;
+    font-size: 35px;
+    color: #fff;
+    background: #a64bf4;
+    }

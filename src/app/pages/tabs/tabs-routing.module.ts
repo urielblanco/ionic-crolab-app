@@ -1,3 +1,5 @@
+import { AddUserComponent } from './../../components/add-user/add-user.component';
+import { UserListComponent } from './../../components/user-list/user-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
@@ -21,7 +23,17 @@ const routes: Routes = [
         loadChildren: () => import('../favoritos/favoritos.module').then(m => m.FavoritosPageModule)
       },
       {
-        path: 'usuario',
+        path: 'usuarios',
+        component: UserListComponent, 
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'addUser',
+        component: AddUserComponent, 
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'profile',
         loadChildren: () => import('../user/user.module').then(m => m.UserPageModule), 
         canActivate: [AuthGuardService]
       },

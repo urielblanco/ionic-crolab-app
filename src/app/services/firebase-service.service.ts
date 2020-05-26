@@ -1,4 +1,5 @@
 import { AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,27 +8,28 @@ import { Injectable } from '@angular/core';
 export class FirebaseService {
   datetime = new Date().getTime();
   constructor(
-    private db: AngularFirestore
+    private db: AngularFirestore, 
+    private storage: AngularFireStorage
   ) { }
 
   getUsers(){
     return new Promise<any>((resolve, reject) => {
       this.db.collection('users').valueChanges()
       .subscribe(snapshots => {
-        console.log('getUsers', snapshots);
         resolve(snapshots)
       })
     })
   }
 
-  createUser(value, avatar){
+  createUser(value, avatar, photoPath){
     return this.db.collection('users').doc(`${this.datetime}`).set({
       id: this.datetime,
       name: value.name,
       nameToSearch: value.name.toLowerCase(),
       surname: value.surname,
       age: parseInt(value.age),
-      avatar: avatar
+      avatar: avatar,
+      photoPAth: photoPath
     });
   }
 
@@ -36,8 +38,17 @@ export class FirebaseService {
     return this.db.collection('users').doc(`${userKey}`).set(value);
   }
 
-  deleteUser(userKey){
-    return this.db.collection('users').doc(`${userKey}`).delete();
+  deleteUser(userKey, userPhoto){
+    let vm = this;
+    return this.db.collection('users').doc(`${userKey}`)
+    .delete()
+    .then(function(){
+      try{
+        vm.storage.storage.refFromURL(`${userPhoto}`).delete()
+      }
+      catch(error){console.log('deleteUser error', error)}
+      })
+    .catch(error => console.log('deleteUser error', error));
   }
 
   searchUsers(searchValue){
@@ -52,7 +63,6 @@ export class FirebaseService {
    }
 
    setFavorite(uid, film){
-     console.log('film', film);
      return this.db.collection(`${uid}`).doc(`${film.id}`).set(film);
    }
 

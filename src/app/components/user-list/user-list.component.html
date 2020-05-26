@@ -1,5 +1,15 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Usuarios
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+
 <div class="list-group users-list">
-	<div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
+  <h2 *ngIf="items.length == 0">No hay usuarios</h2>
+	<div *ngFor="let item of items; let index = index" class="list-group-item list-group-item-action flex-column align-items-start">
 		<div class="row">
 			<div class="col col-md-2 image-col">
 				<img class="image" [src]="item.avatar">
@@ -9,10 +19,14 @@
 				<small>Age: {{item.age}}</small>
 			</div>
 			<div class="col col-md-2 actions-col">
-				<button class="btn btn-outline-primary action" (click)="removeItem(item)" type="button">
+				<button class="btn btn-outline-primary action" (click)="removeItem(index)" type="button">
           <span>Delete</span>
 				</button>
 			</div>
-		</div>
-	</div>
+    </div>
+    <hr>
+  </div>
 </div>
+<button class="addUserBtn"  routerLink="/addUser">
+  <span>+</span>
+</button>

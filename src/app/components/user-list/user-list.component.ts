@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  items: any 
+  items: any = [];
 
   constructor(public firebaseService: FirebaseService, private router: Router) { }
 
@@ -19,8 +19,9 @@ export class UserListComponent implements OnInit {
      })
      .catch(error => {console.log('getusers ERROR', error);})
    }
-   removeItem(item){
-     this.firebaseService.deleteUser(`${item.id}`)
+   removeItem(index){
+     const item = this.items[index];
+     this.firebaseService.deleteUser(item.id, item.avatar)
      .then(result => {
       window.location.reload();
      })
