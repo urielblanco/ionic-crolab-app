@@ -1,3 +1,19 @@
-div.text-center span.txt1 {
-    margin-right: 5px;
+.wrap-login100 {
+    padding-bottom: 10px;
+
+    div.text-center span.txt1 {
+        margin-right: 5px;
+    }
+    
+    .container-login100-form-finger .wrap-login100-form-btn {
+        width: 25%;
+        min-width: 80px;
+        margin-top: 15px;
+        button {
+            font-size: 2rem;
+        }
+    }
+    .sign-up {
+        margin-top: 30px;
+    }
 }

@@ -4,6 +4,8 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { Analytics } from 'capacitor-analytics';
 const analytics = new Analytics();
 
+import { Plugins } from '@capacitor/core';
+const { Storage } = Plugins;
 @Component({
   selector: 'app-user',
   templateUrl: './user.page.html',
@@ -35,7 +37,7 @@ userData;
     .catch((error) => {console.log(`setScreen ERROR: `, error)})
   }
 
-  logout() {
+  async logout() {
     this.auth.logout();
     this.router.navigate(['/login']);
   }

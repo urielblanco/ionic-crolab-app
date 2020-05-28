@@ -11,6 +11,9 @@ def capacitor_pods
   pod 'Capacitor', :path => '../../node_modules/@capacitor/ios'
   pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
   pod 'CapacitorAnalytics', :path => '../../node_modules/capacitor-analytics'
+  pod 'CapacitorBiometricAuth', :path => '../../node_modules/capacitor-biometric-auth'
+  pod 'CapacitorFcm', :path => '../../node_modules/capacitor-fcm'
+  pod 'CordovaPluginsStatic', :path => '../capacitor-cordova-ios-plugins'
   # Do not delete
 end
 

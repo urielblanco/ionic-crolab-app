@@ -60,7 +60,32 @@ export class FirebaseService {
   searchUsersByAge(value){
     return this.db.collection('users',ref => ref.orderBy('age').startAt(value))
     .snapshotChanges();
-   }
+  }
+
+
+  setToken(userId, token){
+    let resolve: any = '';
+    this.db.collection('tokens').doc(`${userId}`).set({token: token})
+    .then(resp => {
+      resolve = resp;
+    })
+    .catch(error => {
+      resolve = error;
+    })
+    .finally(()=> {return resolve;})
+  }
+
+  updateToken(userId, token){
+    let resolve: any = '';
+    this.db.collection('tokens').doc(`${userId}`).set({token: token})
+    .then(resp => {
+      resolve = resp;
+    })
+    .catch(error => {
+      return this.setToken(userId, token);
+    })
+    .finally(()=> {return resolve;})
+  }
 
    setFavorite(uid, film){
      return this.db.collection(`${uid}`).doc(`${film.id}`).set(film);

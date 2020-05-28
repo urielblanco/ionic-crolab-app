@@ -53,9 +53,6 @@ import { from } from 'rxjs';
     IonicModule.forRoot(),
     MatFormFieldModule,
     ObserversModule
-    /*,
-    AnimationTriggerMetadata
-    */
   ],
   providers: [AuthenticationService, AuthGuardService,
     { provide: RouteReuseStrategy,  useClass: IonicRouteStrategy }

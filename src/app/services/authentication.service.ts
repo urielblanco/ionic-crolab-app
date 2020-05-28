@@ -42,7 +42,7 @@ export class AuthenticationService {
   }
   
   async logout() {
-    await Storage.clear();
+    await this.clearLocalStorageUser();
     this.afAuth.signOut().then(() => { console.log('logged out') });
   }
 
@@ -74,6 +74,7 @@ export class AuthenticationService {
   resetPassword(email: string): Promise<any> {
     return this.afAuth.sendPasswordResetEmail(email);
   }
+  
   // Set data on localStorage
   async setUserLoggedIn(user) {
     await Storage.set({
@@ -86,7 +87,6 @@ export class AuthenticationService {
   // get data on localStorage
   async getUserLoggedIn() {
     const ret = await Storage.get({ key: 'user' });
-    console.log('ret', ret);
     if (ret.value) {
       return JSON.parse(ret.value);
     }
