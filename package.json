@@ -32,7 +32,6 @@
     "angularfire2": "^5.4.2",
     "capacitor-analytics": "^2.0.1",
     "capacitor-biometric-auth": "^0.1.0",
-    "capacitor-fcm": "^2.0.0",
     "cordova-plugin-firebase-analytics": "^4.3.0",
     "cordova-support-android-plugin": "^1.0.2",
     "cordova-support-google-services": "^1.4.0",

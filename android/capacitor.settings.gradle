@@ -5,5 +5,5 @@ project(':capacitor-android').projectDir = new File('../node_modules/@capacitor/
 include ':capacitor-analytics'
 project(':capacitor-analytics').projectDir = new File('../node_modules/capacitor-analytics/android')
 
-include ':capacitor-fcm'
-project(':capacitor-fcm').projectDir = new File('../node_modules/capacitor-fcm/android/capacitor-fcm')
+include ':capacitor-biometric-auth'
+project(':capacitor-biometric-auth').projectDir = new File('../node_modules/capacitor-biometric-auth/android')

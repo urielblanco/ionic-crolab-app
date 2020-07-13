@@ -11,7 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '' },
+  //{ path: '', pathMatch: 'full', redirectTo: '' },
   { path: 'home', pathMatch: 'full', redirectTo: 'tabs/peliculas' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent  },

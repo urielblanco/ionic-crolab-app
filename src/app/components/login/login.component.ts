@@ -12,9 +12,6 @@ const { PushNotifications } = Plugins;
 const { Storage } = Plugins;
 const { BiometricAuth } = Plugins;
 
-// with type support
-import { FCM } from "capacitor-fcm";
-const fcm = new FCM();
 
 @Component({
   selector: 'app-login',
@@ -46,7 +43,7 @@ export class LoginComponent implements OnInit {
   async ngOnInit() {}
 
   async ngAfterContentInit(){
-    this.available = await BiometricAuth.isAvailable();
+    this.available = BiometricAuth ? await BiometricAuth.isAvailable() : false;
     this.touchIdOption = await Storage.get({key: 'touchIdOption'});
     console.log('this.touchIdOption.value', this.touchIdOption.value);
     this.touchIdAvailable = this.available;
@@ -191,7 +188,7 @@ export class LoginComponent implements OnInit {
       }
     }
 
-
+  /*
   getFCMToken(){
     PushNotifications.register()
     .then(() => {
@@ -206,5 +203,6 @@ export class LoginComponent implements OnInit {
     })
     .catch(err => alert(JSON.stringify(err)));
   }
+  */
   
 }

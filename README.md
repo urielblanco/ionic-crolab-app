@@ -23,17 +23,23 @@ System:
 npm install -g npx
 
 npm install
+
 ionic build
 
 #para mostrar en web #
+
 ionic serve
+
 ##
 
 npx cap add ios
+
 npx cap add android
+
 npx cap sync
 
 More info: 
+
 https://github.com/IdanCo/angularfire2
 
 https://github.com/stewwan/capacitor-analytics-demo
